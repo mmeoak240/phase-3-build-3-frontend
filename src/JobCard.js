@@ -14,7 +14,7 @@ const JobCard = ({ job }) => {
 			</div>
 		</div>
 	);
-	return <ul>{renderDescription}</ul>;
+	return <li>{renderDescription}</li>;
 };
 
 export default JobCard;
