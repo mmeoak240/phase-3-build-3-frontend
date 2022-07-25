@@ -17,7 +17,7 @@ const App = () => {
 	useEffect(() => {
 		fetch("http://localhost:9292/applications")
 			.then((r) => r.json())
-			.then((data) => setJobs(data));
+			.then((data) => setApplications(data));
 	}, []);
 
 	function handleSubmit(e, newJob, setFormData) {
