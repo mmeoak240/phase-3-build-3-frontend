@@ -14,7 +14,7 @@ const NewJob = ({ handleSubmit }) => {
 
 	return (
 		<>
-			<h1 id="formHeading" className="jobform">
+			<h1 id="formHeading" className="create">
 				Create Job
 			</h1>
 			<form

@@ -29,15 +29,8 @@ code {
 	opacity: 0.8;
 }
 
-.jobform {
+.create {
+	max-width: 400px;
 	margin: 0 auto;
-	display: block;
-	background: white;
-	width: 350px;
-	border-radius: 8px;
-	border-style: solid;
-	border-color: black;
-	border-width: 1px;
-	background: sienna;
-	opacity: 0.8;
+	text-align: center;
 }

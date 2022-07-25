@@ -3,7 +3,13 @@ import Search from "./Search";
 import JobCard from "./JobCard";
 import NewJob from "./NewJob";
 
-const JobsContainer = ({ jobs, search, setSearch, deleteJob }) => {
+const JobsContainer = ({
+	jobs,
+	search,
+	setSearch,
+	deleteJob,
+	handleSubmit,
+}) => {
 	const displayJobs = jobs.filter((job) =>
 		job.title.toLowerCase().includes(search.toLowerCase())
 	);
@@ -15,7 +21,7 @@ const JobsContainer = ({ jobs, search, setSearch, deleteJob }) => {
 			</div>
 
 			<Search search={search} setSearch={setSearch} />
-			<NewJob />
+			<NewJob handleSubmit={handleSubmit} />
 
 			<div>
 				{displayJobs.map((job) => (
