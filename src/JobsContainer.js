@@ -15,7 +15,7 @@ const JobsContainer = ({
 	);
 
 	return (
-		<div>
+		<div style={{ marginleft: 10 }}>
 			<div>
 				<h1>Job Manager</h1>
 			</div>

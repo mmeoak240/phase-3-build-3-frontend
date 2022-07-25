@@ -5,10 +5,17 @@ import JobsContainer from "./JobsContainer";
 
 const App = () => {
 	const [jobs, setJobs] = useState([]);
+	const [applications, setApplications] = useState([]);
 	const [search, setSearch] = useState("");
 
 	useEffect(() => {
 		fetch("http://localhost:9292/jobs")
+			.then((r) => r.json())
+			.then((data) => setJobs(data));
+	}, []);
+
+	useEffect(() => {
+		fetch("http://localhost:9292/applications")
 			.then((r) => r.json())
 			.then((data) => setJobs(data));
 	}, []);
@@ -24,7 +31,7 @@ const App = () => {
 			body: JSON.stringify(newJob),
 		})
 			.then((res) => res.json())
-			.then((newJob) => setJobs([newJob, ...jobs]));
+			.then((newJob) => setJobs([...jobs, newJob]));
 		e.target.reset();
 		setFormData("");
 	}

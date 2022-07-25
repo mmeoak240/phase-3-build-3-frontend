@@ -32,7 +32,7 @@ const NewJob = ({ handleSubmit }) => {
 				<label className="create">Position</label>
 				<input
 					className="create"
-					id="trailName"
+					id="position"
 					type="text"
 					onChange={handleChange}
 					value={formData.position}
@@ -40,7 +40,7 @@ const NewJob = ({ handleSubmit }) => {
 				<label className="create">Employment Type</label>
 				<input
 					className="create"
-					id="location"
+					id="employmentType"
 					type="text"
 					onChange={handleChange}
 					value={formData.employmentType}
@@ -48,7 +48,7 @@ const NewJob = ({ handleSubmit }) => {
 				<label className="create">Education Level</label>
 				<input
 					className="create"
-					id="difficulty"
+					id="educationLevel"
 					type="text"
 					onChange={handleChange}
 					value={formData.educationLevel}
