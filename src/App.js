@@ -49,6 +49,8 @@ const App = () => {
 				setSearch={setSearch}
 				deleteJob={deleteJob}
 				handleSubmit={handleSubmit}
+				applications={applications}
+				setApplications={setApplications}
 			/>
 		</div>
 	);

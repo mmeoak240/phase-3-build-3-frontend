@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const JobCard = ({ job, deleteJob }) => {
+const JobCard = ({ job, deleteJob, setApplications, applications }) => {
 	const { title, position, employment_type, education_level, id } = job;
 
 	const [showApp, setShowApp] = useState(false);
@@ -28,7 +28,7 @@ const JobCard = ({ job, deleteJob }) => {
 						{showApp ? "Hide" : "Applications"}
 					</button>
 				</ul>
-				{/* {showApp ? <Applications /> : null} */}
+				{showApp ? <Applications /> : null}
 			</div>
 		</div>
 	);
