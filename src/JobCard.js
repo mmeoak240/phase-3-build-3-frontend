@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ApplicationsContainer from "./ApplicationsContainer";
 
 const JobCard = ({ job, deleteJob, setApplications, applications }) => {
 	const { title, position, employment_type, education_level, id } = job;
@@ -28,7 +29,12 @@ const JobCard = ({ job, deleteJob, setApplications, applications }) => {
 						{showApp ? "Hide" : "Applications"}
 					</button>
 				</ul>
-				{showApp ? <Applications /> : null}
+				{showApp ? (
+					<ApplicationsContainer
+						setApplications={setApplications}
+						applications={applications}
+					/>
+				) : null}
 			</div>
 		</div>
 	);

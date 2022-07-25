@@ -27,7 +27,13 @@ const JobsContainer = ({
 
 			<div>
 				{displayJobs.map((job) => (
-					<JobCard job={job} key={job.id} deleteJob={deleteJob} />
+					<JobCard
+						job={job}
+						key={job.id}
+						deleteJob={deleteJob}
+						applications={applications}
+						setApplications={setApplications}
+					/>
 				))}
 			</div>
 		</div>
