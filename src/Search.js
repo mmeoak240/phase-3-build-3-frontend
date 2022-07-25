@@ -5,7 +5,7 @@ function Search({ search, setSearch }) {
 				<input
 					type="text"
 					id="search"
-					placeholder="search trails..."
+					placeholder="search jobs..."
 					value={search}
 					onChange={(e) => setSearch(e.target.value)}
 				/>

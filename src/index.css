@@ -28,3 +28,16 @@ code {
 	background: sienna;
 	opacity: 0.8;
 }
+
+.jobform {
+	margin: 0 auto;
+	display: block;
+	background: white;
+	width: 350px;
+	border-radius: 8px;
+	border-style: solid;
+	border-color: black;
+	border-width: 1px;
+	background: sienna;
+	opacity: 0.8;
+}

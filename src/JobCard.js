@@ -1,16 +1,26 @@
-const JobCard = ({ job }) => {
+const JobCard = ({ job, deleteJob }) => {
+	const { title, position, employment_type, education_level, id } = job;
+
+	const handleDelete = () => {
+		deleteJob(id);
+		fetch("http://localhost:9292/jobs/${id}", {
+			method: "DELETE",
+		});
+	};
+
 	const renderDescription = (
 		<div>
 			<div>
-				<li>
-					<h5>{job.title}</h5>
-					<p>
-						<strong>Position:</strong> {job.position}
-					</p>
-					<p>
-						<strong>Education needed:</strong> {job.education_level}
-					</p>
-				</li>
+				<ul>
+					<h5>{title}</h5>
+					<strong>Position:</strong> {position}
+					<p></p>
+					<strong>Employment Type:</strong> {employment_type}
+					<p></p>
+					<strong>Education needed:</strong> {education_level}
+					<p></p>
+					<button onClick={handleDelete}>Delete</button>
+				</ul>
 			</div>
 		</div>
 	);

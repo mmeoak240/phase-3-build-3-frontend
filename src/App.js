@@ -1,9 +1,6 @@
 import "./App.css";
 
 import React, { useState, useEffect } from "react";
-import { Route, Switch } from "react-router-dom";
-import NavBar from "./NavBar";
-import Home from "./Home";
 import JobsContainer from "./JobsContainer";
 
 const App = () => {
@@ -16,17 +13,35 @@ const App = () => {
 			.then((data) => setJobs(data));
 	}, []);
 
+	function handleSubmit(e, newJob, setFormData) {
+		e.preventDefault();
+
+		fetch("http://localhost:9292/jobs", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(newJob),
+		})
+			.then((res) => res.json())
+			.then((newJob) => setJobs([newJob, ...jobs]));
+		e.target.reset();
+		setFormData("");
+	}
+
+	const deleteJob = (id) => {
+		const updatedJobs = jobs.filter((job) => job.id !== id);
+		setJobs(updatedJobs);
+	};
+
 	return (
 		<div>
-			<NavBar />
-			<Switch>
-				<Route path="/jobslist">
-					<JobsContainer jobs={jobs} search={search} setSearch={setSearch} />
-				</Route>
-				<Route path="/">
-					<Home />
-				</Route>
-			</Switch>
+			<JobsContainer
+				jobs={jobs}
+				search={search}
+				setSearch={setSearch}
+				deleteJob={deleteJob}
+			/>
 		</div>
 	);
 };
