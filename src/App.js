@@ -22,6 +22,7 @@ const App = () => {
 
 	function handleSubmit(e, newJob, setFormData) {
 		e.preventDefault();
+		console.log(newJob);
 
 		fetch("http://localhost:9292/jobs", {
 			method: "POST",

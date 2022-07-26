@@ -2,7 +2,9 @@ const Applications = ({ setApplications, application }) => {
 	const { name, email } = application;
 
 	<div>
-		{name} - {email}
+		<p>
+			{name} - {email}
+		</p>
 	</div>;
 };
 

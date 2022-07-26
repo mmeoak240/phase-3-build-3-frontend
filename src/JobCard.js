@@ -13,6 +13,8 @@ const JobCard = ({ job, deleteJob, setApplications, applications }) => {
 		});
 	};
 
+	displayApplications = applications.filter;
+
 	const renderDescription = (
 		<div>
 			<div>
@@ -29,12 +31,14 @@ const JobCard = ({ job, deleteJob, setApplications, applications }) => {
 						{showApp ? "Hide" : "Applications"}
 					</button>
 				</ul>
-				{showApp ? (
-					<ApplicationsContainer
-						setApplications={setApplications}
-						applications={applications}
-					/>
-				) : null}
+				<div>
+					{showApp ? (
+						<ApplicationsContainer
+							setApplications={setApplications}
+							applications={applications}
+						/>
+					) : null}
+				</div>
 			</div>
 		</div>
 	);
