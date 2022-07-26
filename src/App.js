@@ -40,7 +40,7 @@ const App = () => {
 	function handleEditSubmit(e, updatedJob, setFormData) {
 		e.preventDefault();
 
-		fetch("http://localhost:9292/jobs", {
+		fetch("http://localhost:9292/jobs/${id}", {
 			method: "PATCH",
 			headers: {
 				"Content-Type": "application/json",
@@ -48,10 +48,23 @@ const App = () => {
 			body: JSON.stringify(updatedJob),
 		})
 			.then((res) => res.json())
-			.then((newJob) => setJobs([...jobs, updatedJob]));
+			.then((updatedJob) => setJobs([...jobs, updatedJob]));
 		e.target.reset();
 		setFormData("");
 	}
+
+	// function handleEditForm(e) {
+	// 	e.preventDefault();
+	// 	fetch("http://localhost:9292/jobs/${id}", {
+	// 		method: "PATCH",
+	// 		headers: {
+	// 			"Content-Type": "application/json",
+	// 		},
+	// 		body: JSON.stringify({ name: updatedName, email: updatedEmail }),
+	// 	})
+	// 		.then((resp) => resp.json())
+	// 		.then((updatedApplication) => onUpdateApplication(updatedApplication));
+	// }
 
 	// function handleUpdateApplication(updatedApplication) {
 	// 	const updatedApplications = jobs.applications.map((application) => {

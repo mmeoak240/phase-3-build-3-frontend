@@ -14,40 +14,40 @@ const EditForm = ({ onUpdateSubmit }) => {
 
 	return (
 		<>
-			<h1 id="formHeading" className="create">
-				Create Job
-			</h1>
+			<h5 id="formHeading" className="edit">
+				Edit Job
+			</h5>
 			<form
-				className="create"
+				className="edit"
 				onSubmit={(e) => onUpdateSubmit(e, formData, setFormData)}
 			>
-				<label className="create">Title</label>
+				<label className="edit">Title</label>
 				<input
-					className="create"
+					className="edit"
 					id="title"
 					type="text"
 					onChange={handleChange}
 					value={formData.title}
 				/>
-				<label className="create">Position</label>
+				<label className="edit">Position</label>
 				<input
-					className="create"
+					className="edit"
 					id="position"
 					type="text"
 					onChange={handleChange}
 					value={formData.position}
 				/>
-				<label className="create">Employment Type</label>
+				<label className="edit">Employment Type</label>
 				<input
-					className="create"
+					className="edit"
 					id="employment_type"
 					type="text"
 					onChange={handleChange}
 					value={formData.employment_type}
 				/>
-				<label className="create">Education Level</label>
+				<label className="edit">Education Level</label>
 				<input
-					className="create"
+					className="edit"
 					id="education_level"
 					type="text"
 					onChange={handleChange}

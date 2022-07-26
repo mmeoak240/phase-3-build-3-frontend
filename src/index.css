@@ -34,3 +34,9 @@ code {
 	margin: 0 auto;
 	text-align: center;
 }
+
+.edit {
+	max-width: 350px;
+	margin-left: 50px;
+	text-align: left;
+}
