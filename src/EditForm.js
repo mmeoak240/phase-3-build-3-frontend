@@ -1,21 +1,21 @@
 import React, { useState } from "react";
 
-const EditForm = (application, onUpdateApplication) => {
+const EditForm = () => {
 	const [updatedName, setUpdatedName] = useState(application.name);
 	const [updatedEmail, setUpdatedEmail] = useState(application.email);
 
-	function handleEditForm(e) {
-		e.preventDefault();
-		fetch("http://localhost:9292/jobs/${id}", {
-			method: "PATCH",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify({ name: updatedName, email: updatedEmail }),
-		})
-			.then((resp) => resp.json())
-			.then((updatedApplication) => onUpdateApplication(updatedApplication));
-	}
+	// function handleEditForm(e) {
+	// 	e.preventDefault();
+	// 	fetch("http://localhost:9292/jobs/${id}", {
+	// 		method: "PATCH",
+	// 		headers: {
+	// 			"Content-Type": "application/json",
+	// 		},
+	// 		body: JSON.stringify({ name: updatedName, email: updatedEmail }),
+	// 	})
+	// 		.then((resp) => resp.json())
+	// 		.then((updatedApplication) => onUpdateApplication(updatedApplication));
+	// }
 
 	return (
 		<form onSubmit={handleEditForm} style={{ width: 250 }}>

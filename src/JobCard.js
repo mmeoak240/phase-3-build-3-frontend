@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import EditForm from "./EditForm";
 
-const JobCard = ({ job, deleteJob, applications, onUpdateApplication }) => {
+const JobCard = ({ job, deleteJob, applications }) => {
 	const { title, position, employment_type, education_level, id } = job;
 
 	const [isEditing, setIsEditing] = useState(false);
@@ -13,17 +13,16 @@ const JobCard = ({ job, deleteJob, applications, onUpdateApplication }) => {
 		});
 	};
 
-	const handleApplicationUpdate = (updatedApplication) => {
-		setIsEditing(false);
-		onUpdateApplication(updatedApplication);
-	};
+	// const handleApplicationUpdate = (updatedApplication) => {
+	// 	setIsEditing(false);
+	// 	onUpdateApplication(updatedApplication);
+	// };
 
 	const displayApplications = applications.map((application) => {
 		return (
 			<div>
 				<p>
 					{application.name} - {application.email}
-					<EditForm />
 				</p>
 			</div>
 		);
@@ -42,6 +41,7 @@ const JobCard = ({ job, deleteJob, applications, onUpdateApplication }) => {
 				<button onClick={handleDelete}>Filled</button>
 			</p>
 			{displayApplications}
+			<EditForm />
 		</div>
 	);
 };
