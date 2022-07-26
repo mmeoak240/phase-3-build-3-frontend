@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import Applications from "./Applications";
+import EditForm from "./EditForm";
 
-const JobCard = ({ job, deleteJob, applications }) => {
+const JobCard = ({ job, deleteJob, applications, onUpdateApplication }) => {
 	const { title, position, employment_type, education_level, id } = job;
 
-	const [showForm, setShowForm] = useState(false);
+	const [isEditing, setIsEditing] = useState(false);
 
 	const handleDelete = () => {
 		deleteJob(id);
@@ -13,12 +13,17 @@ const JobCard = ({ job, deleteJob, applications }) => {
 		});
 	};
 
+	const handleApplicationUpdate = (updatedApplication) => {
+		setIsEditing(false);
+		onUpdateApplication(updatedApplication);
+	};
+
 	const displayApplications = applications.map((application) => {
 		return (
 			<div>
 				<p>
-					{application.name} - {application.email} -{" "}
-					<button onClick={handleEdit}>Edit</button>
+					{application.name} - {application.email}
+					<EditForm />
 				</p>
 			</div>
 		);

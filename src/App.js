@@ -44,7 +44,16 @@ const App = () => {
 		setFormData("");
 	}
 
-	const handleEdit = (id) => {};
+	function handleUpdateApplication(updatedApplication) {
+		const updatedApplications = jobs.applications.map((application) => {
+			if (application.id === updatedApplication.id) {
+				return updatedApplication;
+			} else {
+				return application;
+			}
+		});
+		setJobs(updatedApplication);
+	}
 
 	const deleteJob = (id) => {
 		const updatedJobs = jobs.filter((job) => job.id !== id);
@@ -59,6 +68,7 @@ const App = () => {
 				setSearch={setSearch}
 				deleteJob={deleteJob}
 				handleSubmit={handleSubmit}
+				onUpdateApplication={handleUpdateApplication}
 				// applications={applications}
 				// setApplications={setApplications}
 			/>
