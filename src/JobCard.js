@@ -20,20 +20,20 @@ const JobCard = ({ job, deleteJob, applications }) => {
 	const renderDescription = (
 		<div>
 			<div>
+				<h5>{title}</h5>
 				<p>
-					<h5>{title}</h5>
 					<strong>Position:</strong> {position}
-					<p></p>
+					<div></div>
 					<strong>Employment Type:</strong> {employment_type}
-					<p></p>
+					<div></div>
 					<strong>Education needed:</strong> {education_level}
-					<p></p>
+					<div></div>
 					<button onClick={handleDelete}>Filled</button>
 					<button onClick={() => setShowApp((showApp) => !showApp)}>
 						{showApp ? "Hide" : "Applications"}
 					</button>
 				</p>
-				<div>{showApp ? <Applications /> : null}</div>
+				<p>{showApp ? <Applications /> : null}</p>
 			</div>
 		</div>
 	);
