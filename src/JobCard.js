@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import ApplicationsContainer from "./ApplicationsContainer";
+import Applications from "./Applications";
 
-const JobCard = ({ job, deleteJob, setApplications, applications }) => {
+const JobCard = ({ job, deleteJob, applications }) => {
 	const { title, position, employment_type, education_level, id } = job;
 
 	const [showApp, setShowApp] = useState(false);
@@ -13,12 +13,14 @@ const JobCard = ({ job, deleteJob, setApplications, applications }) => {
 		});
 	};
 
-	displayApplications = applications.filter;
+	// const displayApplications = applications.map((application) => {
+	// 	<Applications application={application} />;
+	// });
 
 	const renderDescription = (
 		<div>
 			<div>
-				<ul>
+				<p>
 					<h5>{title}</h5>
 					<strong>Position:</strong> {position}
 					<p></p>
@@ -30,15 +32,8 @@ const JobCard = ({ job, deleteJob, setApplications, applications }) => {
 					<button onClick={() => setShowApp((showApp) => !showApp)}>
 						{showApp ? "Hide" : "Applications"}
 					</button>
-				</ul>
-				<div>
-					{showApp ? (
-						<ApplicationsContainer
-							setApplications={setApplications}
-							applications={applications}
-						/>
-					) : null}
-				</div>
+				</p>
+				<div>{showApp ? <Applications /> : null}</div>
 			</div>
 		</div>
 	);

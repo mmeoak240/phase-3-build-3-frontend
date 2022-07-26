@@ -1,11 +1,13 @@
-const Applications = ({ setApplications, application }) => {
+const Applications = ({ application }) => {
 	const { name, email } = application;
 
-	<div>
-		<p>
-			{name} - {email}
-		</p>
-	</div>;
+	return (
+		<div>
+			<p>
+				{name} - {email}
+			</p>
+		</div>
+	);
 };
 
 export default Applications;

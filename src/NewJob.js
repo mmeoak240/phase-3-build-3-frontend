@@ -4,8 +4,8 @@ const NewJob = ({ handleSubmit }) => {
 	const [formData, setFormData] = useState({
 		title: "",
 		position: "",
-		employmentType: "",
-		educationLevel: "",
+		employment_type: "",
+		education_level: "",
 	});
 
 	function handleChange(e) {
@@ -40,18 +40,18 @@ const NewJob = ({ handleSubmit }) => {
 				<label className="create">Employment Type</label>
 				<input
 					className="create"
-					id="employmentType"
+					id="employment_type"
 					type="text"
 					onChange={handleChange}
-					value={formData.employmentType}
+					value={formData.employment_type}
 				/>
 				<label className="create">Education Level</label>
 				<input
 					className="create"
-					id="educationLevel"
+					id="education_level"
 					type="text"
 					onChange={handleChange}
-					value={formData.educationLevel}
+					value={formData.education_level}
 				/>
 				<button className="create-button" type="submit">
 					Submit
