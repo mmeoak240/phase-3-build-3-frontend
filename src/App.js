@@ -37,6 +37,22 @@ const App = () => {
 		setFormData("");
 	}
 
+	function handleEditSubmit(e, updatedJob, setFormData) {
+		e.preventDefault();
+
+		fetch("http://localhost:9292/jobs", {
+			method: "PATCH",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(updatedJob),
+		})
+			.then((res) => res.json())
+			.then((newJob) => setJobs([...jobs, updatedJob]));
+		e.target.reset();
+		setFormData("");
+	}
+
 	// function handleUpdateApplication(updatedApplication) {
 	// 	const updatedApplications = jobs.applications.map((application) => {
 	// 		if (application.id === updatedApplication.id) {
@@ -61,6 +77,7 @@ const App = () => {
 				setSearch={setSearch}
 				deleteJob={deleteJob}
 				handleSubmit={handleSubmit}
+				onUpdateSubmit={handleEditSubmit}
 				// onUpdateApplication={handleUpdateApplication}
 			/>
 		</div>

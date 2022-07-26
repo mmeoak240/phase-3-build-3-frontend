@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import EditForm from "./EditForm";
 
-const JobCard = ({ job, deleteJob, applications }) => {
+const JobCard = ({ job, deleteJob, applications, onUpdateSubmit }) => {
 	const { title, position, employment_type, education_level, id } = job;
 
 	const [isEditing, setIsEditing] = useState(false);
@@ -41,7 +41,7 @@ const JobCard = ({ job, deleteJob, applications }) => {
 				<button onClick={handleDelete}>Filled</button>
 			</p>
 			{displayApplications}
-			<EditForm />
+			<EditForm onUpdateSubmit={onUpdateSubmit} />
 		</div>
 	);
 };

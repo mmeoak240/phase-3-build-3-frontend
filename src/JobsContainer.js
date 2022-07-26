@@ -9,6 +9,7 @@ const JobsContainer = ({
 	setSearch,
 	deleteJob,
 	handleSubmit,
+	onUpdateSubmit,
 	// onUpdateApplication,
 }) => {
 	const displayJobs = jobs.filter((job) =>
@@ -31,6 +32,7 @@ const JobsContainer = ({
 						key={job.id}
 						deleteJob={deleteJob}
 						applications={job.applications}
+						onUpdateSubmit={onUpdateSubmit}
 						// onUpdateApplication={onUpdateApplication}
 					/>
 				))}
