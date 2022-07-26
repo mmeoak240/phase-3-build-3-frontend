@@ -4,8 +4,16 @@ import React, { useState, useEffect } from "react";
 import JobsContainer from "./JobsContainer";
 
 const App = () => {
-	const [jobs, setJobs] = useState([]);
-	const [applications, setApplications] = useState([]);
+	const [jobs, setJobs] = useState([
+		{
+			title: "",
+			position: "",
+			employment_type: "",
+			education_level: "",
+			applications: [],
+		},
+	]);
+	// const [applications, setApplications] = useState([]);
 	const [search, setSearch] = useState("");
 
 	useEffect(() => {
@@ -14,15 +22,14 @@ const App = () => {
 			.then((data) => setJobs(data));
 	}, []);
 
-	useEffect(() => {
-		fetch("http://localhost:9292/applications")
-			.then((r) => r.json())
-			.then((data) => setApplications(data));
-	}, []);
+	// useEffect(() => {
+	// 	fetch("http://localhost:9292/applications")
+	// 		.then((r) => r.json())
+	// 		.then((data) => setApplications(data));
+	// }, []);
 
 	function handleSubmit(e, newJob, setFormData) {
 		e.preventDefault();
-		console.log(newJob);
 
 		fetch("http://localhost:9292/jobs", {
 			method: "POST",
@@ -37,6 +44,8 @@ const App = () => {
 		setFormData("");
 	}
 
+	const handleEdit = (id) => {};
+
 	const deleteJob = (id) => {
 		const updatedJobs = jobs.filter((job) => job.id !== id);
 		setJobs(updatedJobs);
@@ -50,8 +59,8 @@ const App = () => {
 				setSearch={setSearch}
 				deleteJob={deleteJob}
 				handleSubmit={handleSubmit}
-				applications={applications}
-				setApplications={setApplications}
+				// applications={applications}
+				// setApplications={setApplications}
 			/>
 		</div>
 	);

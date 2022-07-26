@@ -9,7 +9,6 @@ const JobsContainer = ({
 	setSearch,
 	deleteJob,
 	handleSubmit,
-	setApplications,
 	applications,
 }) => {
 	const displayJobs = jobs.filter((job) =>
@@ -31,8 +30,7 @@ const JobsContainer = ({
 						job={job}
 						key={job.id}
 						deleteJob={deleteJob}
-						applications={applications}
-						setApplications={setApplications}
+						applications={job.applications}
 					/>
 				))}
 			</div>
