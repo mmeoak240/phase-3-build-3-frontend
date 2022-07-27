@@ -4,8 +4,6 @@ import EditForm from "./EditForm";
 const JobCard = ({ job, deleteJob, applications, handleUpdateJob }) => {
 	const { title, position, employment_type, education_level, id } = job;
 
-	const [isEditing, setIsEditing] = useState(false);
-
 	const handleDelete = () => {
 		deleteJob(id);
 		fetch(`http://localhost:9292/jobs/${id}`, {
@@ -20,7 +18,7 @@ const JobCard = ({ job, deleteJob, applications, handleUpdateJob }) => {
 
 	const displayApplications = applications.map((application) => {
 		return (
-			<div>
+			<div id={application.id}>
 				<p>
 					{application.name} - {application.email}
 				</p>
@@ -41,7 +39,7 @@ const JobCard = ({ job, deleteJob, applications, handleUpdateJob }) => {
 				<button onClick={handleDelete}>Filled</button>
 			</p>
 			{displayApplications}
-			<EditForm handleUpdateJob={handleUpdateJob} />
+			<EditForm handleUpdateJob={handleUpdateJob} job={job} />
 		</div>
 	);
 };

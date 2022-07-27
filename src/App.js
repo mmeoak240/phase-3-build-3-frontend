@@ -38,14 +38,7 @@ const App = () => {
 	}
 
 	function handleUpdateJob(updatedJob) {
-		const updatedJobs = jobs.map((job) => {
-			if (job.id === updatedJob.id) {
-				return updatedJob;
-			} else {
-				return job;
-			}
-		});
-		setJobs(updatedJobs);
+		setJobs(...jobs, updatedJob);
 	}
 
 	const deleteJob = (id) => {
