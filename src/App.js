@@ -38,7 +38,7 @@ const App = () => {
 	}
 
 	function handleUpdateJob(updatedJob) {
-		setJobs(...jobs, updatedJob);
+		setJobs([...jobs, updatedJob]);
 	}
 
 	const deleteJob = (id) => {

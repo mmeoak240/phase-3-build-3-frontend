@@ -1,30 +1,12 @@
 import React, { useState } from "react";
 
-const EditForm = (handleUpdateJob, job) => {
+const EditForm = (onUpdateForm) => {
 	const [formData, setFormData] = useState({
-		id: job.id,
-		title: job.title,
-		position: job.position,
-		employment_type: job.employment_type,
-		education_level: job.education_level,
+		title: "",
+		position: "",
+		employment_type: "",
+		education_level: "",
 	});
-
-	function onUpdateForm(e) {
-		e.preventDefault();
-
-		fetch(`http://localhost:9292/jobs/${formData.id}`, {
-			method: "PATCH",
-			headers: {
-				"Content-Type": "application/json",
-				Accept: "application/json",
-			},
-			body: JSON.stringify(formData),
-		})
-			.then((resp) => resp.json())
-			.then((updatedJob) => {
-				handleUpdateJob(updatedJob);
-			});
-	}
 
 	function handleChange(e) {
 		setFormData({ ...formData, [e.target.id]: e.target.value });
