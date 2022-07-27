@@ -1,12 +1,27 @@
 import React, { useState } from "react";
 
-const EditForm = ({ onUpdateSubmit }) => {
+const EditForm = (handleUpdateJob) => {
 	const [formData, setFormData] = useState({
 		title: "",
 		position: "",
 		employment_type: "",
 		education_level: "",
 	});
+
+	function onUpdateForm(e) {
+		e.preventDefault();
+
+		fetch("http://localhost:9292/jobs/1", {
+			method: "PATCH",
+			headers: {
+				"Content-Type": "application/json",
+				Accept: "application/json",
+			},
+			body: JSON.stringify(formData),
+		})
+			.then((resp) => resp.json())
+			.then((updatedJob) => handleUpdateJob(updatedJob));
+	}
 
 	function handleChange(e) {
 		setFormData({ ...formData, [e.target.id]: e.target.value });
@@ -17,10 +32,7 @@ const EditForm = ({ onUpdateSubmit }) => {
 			<h5 id="formHeading" className="edit">
 				Edit Job
 			</h5>
-			<form
-				className="edit"
-				onSubmit={(e) => onUpdateSubmit(e, formData, setFormData)}
-			>
+			<form className="edit" onSubmit={(e) => onUpdateForm(e, formData)}>
 				<label className="edit">Title</label>
 				<input
 					className="edit"

@@ -9,8 +9,7 @@ const JobsContainer = ({
 	setSearch,
 	deleteJob,
 	handleSubmit,
-	onUpdateSubmit,
-	// onUpdateApplication,
+	handleUpdateJob,
 }) => {
 	const displayJobs = jobs.filter((job) =>
 		job.title.toLowerCase().includes(search.toLowerCase())
@@ -32,8 +31,7 @@ const JobsContainer = ({
 						key={job.id}
 						deleteJob={deleteJob}
 						applications={job.applications}
-						onUpdateSubmit={onUpdateSubmit}
-						// onUpdateApplication={onUpdateApplication}
+						handleUpdateJob={handleUpdateJob}
 					/>
 				))}
 			</div>
