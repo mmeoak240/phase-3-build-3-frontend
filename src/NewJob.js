@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const NewJob = ({ handleSubmit }) => {
+const NewJob = ({ handleJobSubmit }) => {
 	const [formData, setFormData] = useState({
 		title: "",
 		position: "",
@@ -14,12 +14,12 @@ const NewJob = ({ handleSubmit }) => {
 
 	return (
 		<>
-			<h1 id="formHeading" className="create">
+			<h4 id="formHeading" className="create">
 				Create Job
-			</h1>
+			</h4>
 			<form
 				className="create"
-				onSubmit={(e) => handleSubmit(e, formData, setFormData)}
+				onSubmit={(e) => handleJobSubmit(e, formData, setFormData)}
 			>
 				<label className="create">Title</label>
 				<input

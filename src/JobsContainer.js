@@ -2,14 +2,16 @@ import React from "react";
 import Search from "./Search";
 import JobCard from "./JobCard";
 import NewJob from "./NewJob";
+import NewApplication from "./NewApplication";
 
 const JobsContainer = ({
 	jobs,
 	search,
 	setSearch,
 	deleteJob,
-	handleSubmit,
+	handleJobSubmit,
 	handleUpdateJob,
+	handleApplicationSubmit,
 }) => {
 	const displayJobs = jobs.filter((job) =>
 		job.title.toLowerCase().includes(search.toLowerCase())
@@ -22,7 +24,10 @@ const JobsContainer = ({
 			</div>
 
 			<Search search={search} setSearch={setSearch} />
-			<NewJob handleSubmit={handleSubmit} />
+			<NewJob handleJobSubmit={handleJobSubmit} />
+			<br></br>
+			<br></br>
+			<NewApplication handleApplicationSubmit={handleApplicationSubmit} />
 
 			<div>
 				{displayJobs.map((job) => (

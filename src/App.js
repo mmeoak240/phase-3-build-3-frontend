@@ -21,7 +21,7 @@ const App = () => {
 			.then((data) => setJobs(data));
 	}, []);
 
-	function handleSubmit(e, newJob, setFormData) {
+	function handleJobSubmit(e, newJob, setFormData) {
 		e.preventDefault();
 
 		fetch("http://localhost:9292/jobs", {
@@ -33,6 +33,22 @@ const App = () => {
 		})
 			.then((res) => res.json())
 			.then((newJob) => setJobs([...jobs, newJob]));
+		e.target.reset();
+		setFormData("");
+	}
+
+	function handleApplicationSubmit(e, newApplication, setFormData) {
+		e.preventDefault();
+
+		fetch("http://localhost:9292/jobs/applications", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(newApplication),
+		})
+			.then((res) => res.json())
+			.then((newApplication) => setJobs([...jobs, newApplication]));
 		e.target.reset();
 		setFormData("");
 	}
@@ -53,8 +69,9 @@ const App = () => {
 				search={search}
 				setSearch={setSearch}
 				deleteJob={deleteJob}
-				handleSubmit={handleSubmit}
+				handleJobSubmit={handleJobSubmit}
 				handleUpdateJob={handleUpdateJob}
+				handleApplicationSubmit={handleApplicationSubmit}
 			/>
 		</div>
 	);
