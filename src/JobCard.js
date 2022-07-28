@@ -25,7 +25,6 @@ const JobCard = ({ job, deleteJob, applications, handleUpdateJob }) => {
 			method: "PATCH",
 			headers: {
 				"Content-Type": "application/json",
-				Accept: "application/json",
 			},
 			body: JSON.stringify(formData),
 		})
