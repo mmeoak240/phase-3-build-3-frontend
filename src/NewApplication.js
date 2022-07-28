@@ -1,47 +1,71 @@
 import React, { useState } from "react";
 
-const NewApplication = ({ handleApplicationSubmit }) => {
-	const [formData, setFormData] = useState({
-		name: "",
-		email: "",
-	});
+function NewApplication({ jobs, addNewApplication }) {
+	const [name, setName] = useState("");
+	const [email, setEmail] = useState("");
+	const [jobOption, setJobOption] = useState("");
 
-	function handleChange(e) {
-		setFormData({ ...formData, [e.target.id]: e.target.value });
-	}
+	const newJob = {
+		name,
+		email,
+		job_id: jobOption,
+	};
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+
+		fetch("http://localhost:9292/donations", {
+			method: "POST",
+			headers: {
+				Accept: "application/json",
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(newJob),
+		})
+			.then((resp) => resp.json())
+			.then((application) => {
+				addNewApplication(application);
+			});
+	};
 
 	return (
-		<>
-			<h4 id="formHeading" className="create">
-				Submit Application
-			</h4>
-			<form
-				className="create"
-				onSubmit={(e) => handleApplicationSubmit(e, formData, setFormData)}
-			>
-				<label className="create">Name</label>
+		<div>
+			<h3>Apply</h3>
+			<form onSubmit={handleSubmit}>
+				<label htmlFor="amount">Name:</label>
 				<input
-					className="create"
 					id="name"
 					type="text"
-					onChange={handleChange}
-					value={formData.name}
+					name="name"
+					value={name}
+					onChange={(e) => setName(e.target.value)}
 				/>
-				<label className="create">Email</label>
+				<label htmlFor="email">Email:</label>
 				<input
-					className="create"
 					id="email"
 					type="text"
-					onChange={handleChange}
-					value={formData.email}
+					name="email"
+					value={email}
+					onChange={(e) => setEmail(e.target.value)}
 				/>
-
-				<button className="create-button" type="submit">
-					Submit
-				</button>
+				<label>
+					Job:
+					<select
+						placeholder="Select a job"
+						onChange={(e) => setJobOption(e.target.value)}
+					>
+						<option value="none">Select a job:</option>
+						{jobs.map((job) => (
+							<option key={job.id} value={job.id}>
+								{job.name}
+							</option>
+						))}
+					</select>
+				</label>
+				<button type="submit">Apply</button>
 			</form>
-		</>
+		</div>
 	);
-};
+}
 
 export default NewApplication;

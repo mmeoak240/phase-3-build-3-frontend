@@ -33,6 +33,7 @@ const JobsContainer = ({
 				{displayJobs.map((job) => (
 					<JobCard
 						job={job}
+						jobs={jobs}
 						key={job.id}
 						deleteJob={deleteJob}
 						applications={job.applications}

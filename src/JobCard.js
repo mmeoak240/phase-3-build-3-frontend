@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import EditForm from "./EditForm";
+import NewApplication from "./NewApplication";
 
-const JobCard = ({ job, deleteJob, applications, handleUpdateJob }) => {
+const JobCard = ({ job, jobs, deleteJob, applications, handleUpdateJob }) => {
 	const { title, position, employment_type, education_level, id } = job;
 
 	const [formData, setFormData] = useState({
@@ -10,6 +10,12 @@ const JobCard = ({ job, deleteJob, applications, handleUpdateJob }) => {
 		employment_type: "",
 		education_level: "",
 	});
+
+	const [showApply, setShowApply] = useState(false);
+
+	const handleClick = () => {
+		setShowApply((showApply) => !showApply);
+	};
 
 	const handleDelete = () => {
 		deleteJob(id);
@@ -104,9 +110,11 @@ const JobCard = ({ job, deleteJob, applications, handleUpdateJob }) => {
 				<strong>Education needed:</strong> {education_level}
 				<div></div>
 				<button onClick={handleDelete}>Filled</button>
+				<button onClick={handleClick}>{showApply ? "Done" : "Apply"}</button>
 			</p>
 			{displayApplications}
 			{editForm}
+			{showApply ? <NewApplication jobs={jobs} /> : null}
 		</div>
 	);
 };
