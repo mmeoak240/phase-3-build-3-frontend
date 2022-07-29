@@ -23,11 +23,10 @@ const JobsContainer = ({
 				<h1>Job Manager</h1>
 			</div>
 
-			<Search search={search} setSearch={setSearch} />
+			{/* <Search search={search} setSearch={setSearch} /> */}
 			<NewJob handleJobSubmit={handleJobSubmit} />
 			<br></br>
 			<br></br>
-			<NewApplication handleApplicationSubmit={handleApplicationSubmit} />
 
 			<div>
 				{displayJobs.map((job) => (
@@ -36,7 +35,7 @@ const JobsContainer = ({
 						jobs={jobs}
 						key={job.id}
 						deleteJob={deleteJob}
-						applications={job.applications}
+						indvApplications={job.applications}
 						handleUpdateJob={handleUpdateJob}
 					/>
 				))}

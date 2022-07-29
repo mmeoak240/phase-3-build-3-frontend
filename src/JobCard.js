@@ -1,7 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import NewApplication from "./NewApplication";
 
-const JobCard = ({ job, jobs, deleteJob, applications, handleUpdateJob }) => {
+const JobCard = ({
+	job,
+	jobs,
+	deleteJob,
+	indvApplications,
+	handleUpdateJob,
+}) => {
 	const { title, position, employment_type, education_level, id } = job;
 
 	const [formData, setFormData] = useState({
@@ -11,11 +17,42 @@ const JobCard = ({ job, jobs, deleteJob, applications, handleUpdateJob }) => {
 		education_level: "",
 	});
 
+	const [applications, setApplications] = useState([
+		{
+			name: "",
+			email: "",
+		},
+	]);
 	const [showApply, setShowApply] = useState(false);
 
-	const handleClick = () => {
-		setShowApply((showApply) => !showApply);
-	};
+	// useEffect(() => {
+	// 	fetch("http://localhost:9292/applications")
+	// 		.then((r) => r.json())
+	// 		.then((data) => setApplications(data));
+	// }, []);
+
+	function handleClick() {
+		setShowApply(!showApply);
+	}
+
+	function handleAddApplication(e, newApplication) {
+		e.preventDefault();
+		setShowApply(!showApply);
+
+		fetch("http://localhost:9292/applications", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(newApplication),
+		})
+			.then((res) => res.json())
+			.then((newApplication) =>
+				setApplications([...applications, newApplication])
+			);
+		e.target.reset();
+		setFormData("");
+	}
 
 	const handleDelete = () => {
 		deleteJob(id);
@@ -45,7 +82,7 @@ const JobCard = ({ job, jobs, deleteJob, applications, handleUpdateJob }) => {
 	// 	onUpdateApplication(updatedApplication);
 	// };
 
-	const displayApplications = applications.map((application) => {
+	const displayApplications = indvApplications.map((application) => {
 		return (
 			<div key={application.id}>
 				<p>
@@ -114,7 +151,9 @@ const JobCard = ({ job, jobs, deleteJob, applications, handleUpdateJob }) => {
 			</p>
 			{displayApplications}
 			{editForm}
-			{showApply ? <NewApplication jobs={jobs} /> : null}
+			{showApply ? (
+				<NewApplication handleAddApplication={handleAddApplication} id={id} />
+			) : null}
 		</div>
 	);
 };
