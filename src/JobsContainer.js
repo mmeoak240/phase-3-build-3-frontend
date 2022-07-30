@@ -1,8 +1,6 @@
 import React from "react";
-import Search from "./Search";
 import JobCard from "./JobCard";
 import NewJob from "./NewJob";
-import NewApplication from "./NewApplication";
 
 const JobsContainer = ({
 	jobs,

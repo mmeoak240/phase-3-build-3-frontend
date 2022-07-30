@@ -25,11 +25,11 @@ const JobCard = ({
 	]);
 	const [showApply, setShowApply] = useState(false);
 
-	// useEffect(() => {
-	// 	fetch("http://localhost:9292/applications")
-	// 		.then((r) => r.json())
-	// 		.then((data) => setApplications(data));
-	// }, []);
+	useEffect(() => {
+		fetch("http://localhost:9292/applications")
+			.then((r) => r.json())
+			.then((data) => setApplications(data));
+	}, []);
 
 	function handleClick() {
 		setShowApply(!showApply);
@@ -37,7 +37,6 @@ const JobCard = ({
 
 	function handleAddApplication(e, newApplication) {
 		e.preventDefault();
-		setShowApply(!showApply);
 
 		fetch("http://localhost:9292/applications", {
 			method: "POST",
@@ -151,6 +150,9 @@ const JobCard = ({
 			</p>
 			{displayApplications}
 			{editForm}
+			{applications.map((application) => {
+				<li>application</li>;
+			})}
 			{showApply ? (
 				<NewApplication handleAddApplication={handleAddApplication} id={id} />
 			) : null}
