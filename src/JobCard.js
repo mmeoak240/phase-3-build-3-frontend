@@ -50,7 +50,6 @@ const JobCard = ({
 				setApplications([...applications, newApplication])
 			);
 		e.target.reset();
-		setFormData("");
 	}
 
 	const handleDelete = () => {

@@ -5,8 +5,8 @@ function NewApplication({ handleAddApplication, id }) {
 	const [email, setEmail] = useState("");
 
 	const [application, setApplication] = useState({
-		name: "",
-		email: "",
+		name: name,
+		email: email,
 		job_id: id,
 	});
 
@@ -15,7 +15,7 @@ function NewApplication({ handleAddApplication, id }) {
 			<h4>Apply</h4>
 			<form
 				className="edit"
-				onSubmit={(e) => handleAddApplication(e, application, setApplication)}
+				onSubmit={(e) => handleAddApplication(e, application)}
 			>
 				<label htmlFor="amount">Name:</label>
 				<input
