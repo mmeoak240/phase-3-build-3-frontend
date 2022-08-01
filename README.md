@@ -1,4 +1,4 @@
-# Project Name
+# Job/Applications Manager
 
 This is a front end application for a app. The objective of this project is to show case my flatiron school project using ruby, sinatra ...
 
@@ -14,7 +14,12 @@ This is a front end application for a app. The objective of this project is to s
 Fork and clone
 Run yarn install
 Run yarn start
-Follow directions for backend (backend url)
+Follow directions for backend (https://github.com/mmeoak240/phase-3-sinatra-react-project)
+
+### Pending Additions
+
+- Ability to edit applications
+- Ability to alphabetize jobs
 
 ### Licensing
 

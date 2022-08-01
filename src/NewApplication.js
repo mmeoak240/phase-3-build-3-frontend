@@ -4,11 +4,11 @@ function NewApplication({ handleAddApplication, id }) {
 	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
 
-	const [application, setApplication] = useState({
+	const application = {
 		name: name,
 		email: email,
 		job_id: id,
-	});
+	};
 
 	return (
 		<div>

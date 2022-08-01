@@ -9,7 +9,6 @@ const JobsContainer = ({
 	deleteJob,
 	handleJobSubmit,
 	handleUpdateJob,
-	handleApplicationSubmit,
 }) => {
 	const displayJobs = jobs.filter((job) =>
 		job.title.toLowerCase().includes(search.toLowerCase())

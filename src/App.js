@@ -33,9 +33,8 @@ const App = () => {
 			body: JSON.stringify(newJob),
 		})
 			.then((res) => res.json())
-			.then((newJob) => setJobs([...jobs, newJob]));
+			.then((addedJob) => setJobs([...jobs, addedJob]));
 		e.target.reset();
-		setFormData("");
 	}
 
 	function handleUpdateJob(updatedJob) {
